@@ -1,0 +1,16 @@
+{% extends 'phonebook.html' %}
+
+{% block content %}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<form action="" method="post" class="form-concat">
+    <p><label>FirstName &#8432;: </label> <input id = "firstname_id" type="text" name="firstname_name" value="" required />
+<!--Отчество - необязательный -->
+    <p><label>MiddleName: </label> <input id = "middlename_id" type="text" name="middlename_name" value="" />
+    <p><label>LastName &#8432;: </label> <input id = "lastname_id" type="text" name="lastname_name" value="" required />
+    <p><label>Number &#8432;: </label> <input id = "number_id" type="text" name="number_name" value="" required oninvalid="this.setCustomValidity('Wow')"/>
+    <p>&#8432; - Required field</p>
+    <p><input id = "insertion_id" type="submit" name="insertion_name" value="Insertion">
+</form>
+{% endblock %}

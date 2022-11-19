@@ -1,0 +1,44 @@
+{% extends 'phonebook.html' %}
+
+{% block content %}
+<script>
+    function SomeDeleteRowFunction(o) {
+        var p=o.parentNode.parentNode;
+        let isDelete = confirm("Do you want to delete this number?");
+        if (isDelete) {
+            p.parentNode.removeChild(p);
+        }
+    }
+
+    src = "script.js"
+</script>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="6">Phonebook</th>
+        </tr>
+        <tr>
+            <th>First name</th>
+            <th>Middle name</th>
+            <th>Last name</th>
+            <th>Phone number</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for phones in list %}
+        <tr>
+            <td>{{phones.firstName}}</td>
+            <td>{{phones.middleName}}</td>
+            <td>{{phones.lastName}}</td>
+            <td>{{phones.number}}</td>
+            <td><input type="button" value="Delete" onclick="SomeDeleteRowFunction(this)"></td>
+            <td><input type="button" value="Edit" onclick=""></td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
